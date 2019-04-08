@@ -62,10 +62,10 @@
       </el-form-item>
       <!-- prop="validation" -->
 
-      
 
 
-      
+
+
       <!-- <el-form-item> -->
       <div class="line">
         <span class="font bule" @click="goPath">立即注册</span>
@@ -138,7 +138,7 @@ export default {
     // 登录
     Signin() {
       signin({
-        code: this.loginForm.code,
+        // code: this.loginForm.code,
         password: this.loginForm.password,
         phone: this.loginForm.username
       }).then(res => {
