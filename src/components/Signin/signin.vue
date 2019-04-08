@@ -112,7 +112,7 @@ export default {
     };
   },
   created() {
-    this.getCode();
+    // this.getCode();
   },
   methods: {
     // 忘记密码
@@ -139,8 +139,8 @@ export default {
     Signin() {
       signin({
         // code: this.loginForm.code,
-        password: this.loginForm.password,
-        phone: this.loginForm.username
+        userPassword: this.loginForm.password,
+        userCode: this.loginForm.username
       }).then(res => {
         if (res.code == 0) {
           this.data = res.data;
@@ -174,15 +174,15 @@ export default {
     },
 
     //获取验证码
-    getCode() {
-      loginCode().then(res => {
-        if (res.code == 0) {
-          let timing = setTimeout(() => {
-            this.codeImg = res.data;
-          }, 200);
-        }
-      });
-    },
+    // getCode() {
+    //   loginCode().then(res => {
+    //     if (res.code == 0) {
+    //       let timing = setTimeout(() => {
+    //         this.codeImg = res.data;
+    //       }, 200);
+    //     }
+    //   });
+    // },
 
     ...mapActions(["set_Login"])
   }
