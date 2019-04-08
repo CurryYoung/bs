@@ -1,0 +1,2 @@
+export const SET_LOGINSTATE = "SET_LOGINSTATE"
+export const SET_ISLOGIN = "SET_ISLOGIN"
