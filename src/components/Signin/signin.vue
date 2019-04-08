@@ -88,7 +88,7 @@
 
 <script>
 import { signin } from "API/sign";
-import { loginCode } from "API/login_code.js";
+// import { loginCode } from "API/login_code.js";
 import Cookies from "js-cookie";
 import { mapActions, mapGetters } from "vuex";
 import axios from "axios";
