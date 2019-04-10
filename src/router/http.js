@@ -9,7 +9,7 @@ axios.interceptors.request.use(function (config) {
   // axios.defaults.headers.common['Authorization'] = Cookies.get('token')
   // console.log(store.getters.loginState, 1)
   if(store.getters.loginState) {
-    config.headers.Authorization = store.getters.loginState
+    // config.headers.Authorization = store.getters.loginState
   }
   // 在发送请求之前做些什么
   return config;
