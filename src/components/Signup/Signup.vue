@@ -1,51 +1,51 @@
 <template>
   <div class="main">
     <div class="header">
-      <span>物业后台管理系统</span>
+      <span>注册</span>
     </div>
-    <steps-nav ref="stepNav" :actived="actived" @order="handleActived"></steps-nav>
+    <!--<steps-nav ref="stepNav" :actived="actived" @order="handleActived"></steps-nav>-->
 
     <div class="signup" v-if="actived==0">
       <el-form ref="siginFrom" :model="form" class="signupForm" label-position="right" label-width="80px">
-         <h3 class="title">手机号注册</h3>
-          <el-alert
-            v-show="alertTitle"
-            title="手机格式错误"
-            type="error"
-            show-icon>
-          </el-alert>
-        <el-form-item label="手机号" class="formItem">
+         <!--<h3 class="title">手机号注册</h3>-->
+          <!--<el-alert-->
+            <!--v-show="alertTitle"-->
+            <!--title="手机格式错误"-->
+            <!--type="error"-->
+            <!--show-icon>-->
+          <!--</el-alert>-->
+        <el-form-item label="姓名" class="formItem">
           <img src="~assets/image/asterisk.png" class="asterisk" alt="">
-          <el-input placeholder="请输入手机号" v-model="form.phone" name="phone" class="input" @blur="handleFormat"></el-input>
+          <el-input placeholder="姓名" v-model="form.phone" name="phone" class="input" @blur="handleFormat"></el-input>
         </el-form-item>
-        <el-form-item label="密码" class="formItem">
+        <el-form-item label="账号" class="formItem">
           <img src="~assets/image/asterisk.png" class="asterisk" alt="">
-          <el-input placeholder="请输入密码" v-model="form.passWord" name="passWord" class="input" maxlength=16 type="password"></el-input>
+          <el-input placeholder="账号" v-model="form.passWord" name="passWord" class="input" maxlength=16 ></el-input>
         </el-form-item>
-        <el-alert
-            v-show="alertTitlePassWord"
-            title="两次密码不一致"
-            type="error"
-            show-icon>
-          </el-alert>
-        <el-form-item label="确认密码" class="formItem">
-          
+        <!--<el-alert-->
+            <!--v-show="alertTitlePassWord"-->
+            <!--title="两次密码不一致"-->
+            <!--type="error"-->
+            <!--show-icon>-->
+          <!--</el-alert>-->
+        <!--<el-form-item label="确认密码" class="formItem">-->
+
+          <!--<img src="~assets/image/asterisk.png" class="asterisk" alt="">-->
+          <!--<el-input placeholder="确认密码" v-model="form.confirmPassWord" name="confirmPassWprd" class="input" maxlength=16 type="password" @blur="handlePassWord"></el-input>-->
+        <!--</el-form-item>-->
+        <el-form-item label="密码" class="item formItem">
           <img src="~assets/image/asterisk.png" class="asterisk" alt="">
-          <el-input placeholder="确认密码" v-model="form.confirmPassWord" name="confirmPassWprd" class="input" maxlength=16 type="password" @blur="handlePassWord"></el-input>
-        </el-form-item>
-        <el-form-item label="验证码" class="item formItem">
-          <img src="~assets/image/asterisk.png" class="asterisk" alt="">
-          <el-input placeholder=请输入账号昵称 v-model="form.code" name="name" class="input code"></el-input>
+          <el-input placeholder=密码 v-model="form.code" name="name" class="input code" type="password"></el-input>
           <el-button @click="handleGetCode">{{getCodes}}</el-button>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" :style="{'width': '100%'}" @click="Signup">注册</el-button>
         </el-form-item>
-        
+
       </el-form>
     </div>
 
-    <signup-in v-if="actived==1" @steps="handleStepsNo" @edit="handleEdit"></signup-in>
+    <!--<signup-in v-if="actived==1" @steps="handleStepsNo" @edit="handleEdit"></signup-in>-->
 
   </div>
 </template>
@@ -110,7 +110,7 @@ export default {
             type: "success"
           })
         }
-      })     
+      })
     },
     //手机输入框失去焦点
     handleFormat() {
@@ -161,9 +161,9 @@ export default {
         if (count == 0) {
           clearInterval(timing)
           timing = ''
-          this.getCodes = '获取验证码'      
+          this.getCodes = '获取验证码'
           this.isGetCode = false
-        } else {       
+        } else {
           let data = ''
           if (count < 10) {
             data = `0${count}`
@@ -216,7 +216,7 @@ export default {
       background: #fff;
       color: #606266;
       border-color: #dcdfe6;
-  } 
+  }
   .el-alert {
     width: 440px;
     margin-left: 80px;
@@ -231,7 +231,7 @@ export default {
   .header {
     height: 97px;
     line-height: 97px;
-    box-shadow: inset 0px -2px 0px 0px 
+    box-shadow: inset 0px -2px 0px 0px
 		#e5e5e5;
     span {
       margin-left: 50px;
