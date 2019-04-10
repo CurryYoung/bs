@@ -137,18 +137,14 @@ export default {
 
     // 登录
     Signin() {
-      console.log(123)
+      // console.log(123)
       return
       signin({
         userPassword: this.loginForm.password,
         userCode: this.loginForm.username
       }).then(res => {
         if (res.code == 0) {
-          // Cookies.set("token", this.data.token);
-        // this.data = res.data;
-          // Cookies.set("isLogin", "true");
-          // this.data.isLogin = true;
-          // this.set_Login(this.data);
+         console.log(res.code==0)
           this.$router.push({ path: "/Administrator" });
         } else if (res.code == 7) {
           let data = --res.data.step
