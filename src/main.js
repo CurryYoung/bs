@@ -35,12 +35,12 @@ new Vue({
 
 
 //路由拦截
-router.beforeEach((to, from, next)=>{
-  if(to.meta.requiresAuth) {
-    next()
-  } else {
-    if(!store.getters.isLogin || !store.getters.loginState) {
-      next('/')
-    } 
-  }
-})
+// router.beforeEach((to, from, next)=>{
+//   if(to.meta.requiresAuth) {
+//     next()
+//   } else {
+//     if(!store.getters.isLogin || !store.getters.loginState) {
+//       next('/')
+//     }
+//   }
+// })
