@@ -143,6 +143,7 @@ export default {
         userPassword: this.loginForm.password,
         userCode: this.loginForm.username
       }).then(res => {
+        console.log(res.code==0)
         if (res.code == 0) {
          console.log(res.code==0)
           this.$router.push({ path: "/Administrator" });
