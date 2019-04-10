@@ -100,7 +100,7 @@ export default {
       loginForm: {
         username: "",
         password: "",
-        code: ""
+        // code: ""
       },
       loading: true,
       pwdType: "password",
@@ -137,17 +137,18 @@ export default {
 
     // 登录
     Signin() {
+      console.log(123)
+      return
       signin({
-        // code: this.loginForm.code,
         userPassword: this.loginForm.password,
         userCode: this.loginForm.username
       }).then(res => {
         if (res.code == 0) {
-          this.data = res.data;
-          Cookies.set("token", this.data.token);
-          Cookies.set("isLogin", "true");
-          this.data.isLogin = true;
-          this.set_Login(this.data);
+          // Cookies.set("token", this.data.token);
+        this.data = res.data;
+          // Cookies.set("isLogin", "true");
+          // this.data.isLogin = true;
+          // this.set_Login(this.data);
           this.$router.push({ path: "/Administrator" });
         } else if (res.code == 7) {
           let data = --res.data.step
@@ -159,7 +160,7 @@ export default {
             type: "warning"
           });
         } else if(res.code==10) {
-          let data = --res.data.step
+          let data = res.data.step
           let message = res.data.remark
           Cookies.set("token", res.data.token);
           this.set_Login(res.data);
