@@ -138,7 +138,6 @@ export default {
     // 登录
     Signin() {
       // console.log(123)
-      return
       signin({
         userPassword: this.loginForm.password,
         userCode: this.loginForm.username
