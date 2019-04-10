@@ -1,21 +1,23 @@
 import axios from 'axios'
 
-export function loginCode() {
-  let url="/property/login_code"
-  return new Promise((resolve, reject)=>{
-    axios.get(url).then(res=>{
-      resolve(res.data)
-    }).catch(err=>{
-      reject(err)
-    })
-  })
-}
+
+//获取验证码
+// export function loginCode() {
+//   let url="/property/login_code"
+//   return new Promise((resolve, reject)=>{
+//     axios.get(url).then(res=>{
+//       resolve(res.data)
+//     }).catch(err=>{
+//       reject(err)
+//     })
+//   })
+// }
 
 // 获取手机验证
 export function getCode(params) {
   let url = "/property/register_captcha"
   return new Promise((resolve, reject)=>{
-    axios.get(url, {params, params}).then(res=>{
+    axios.get(url, {params: params}).then(res=>{
       resolve(res.data)
     }).catch(err=>{
       reject(err)

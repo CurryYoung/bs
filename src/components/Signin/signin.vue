@@ -88,7 +88,7 @@
 
 <script>
 import { signin } from "API/sign";
-import { loginCode } from "API/login_code.js";
+// import { loginCode } from "API/login_code.js";
 import Cookies from "js-cookie";
 import { mapActions, mapGetters } from "vuex";
 import axios from "axios";
@@ -112,7 +112,7 @@ export default {
     };
   },
   created() {
-    this.getCode();
+    // this.getCode();
   },
   methods: {
     // 忘记密码
@@ -174,15 +174,15 @@ export default {
     },
 
     //获取验证码
-    getCode() {
-      loginCode().then(res => {
-        if (res.code == 0) {
-          let timing = setTimeout(() => {
-            this.codeImg = res.data;
-          }, 200);
-        }
-      });
-    },
+    // getCode() {
+    //   loginCode().then(res => {
+    //     if (res.code == 0) {
+    //       let timing = setTimeout(() => {
+    //         this.codeImg = res.data;
+    //       }, 200);
+    //     }
+    //   });
+    // },
 
     ...mapActions(["set_Login"])
   }
