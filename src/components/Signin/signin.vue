@@ -145,7 +145,7 @@ export default {
       }).then(res => {
         if (res.code == 0) {
           // Cookies.set("token", this.data.token);
-        this.data = res.data;
+        // this.data = res.data;
           // Cookies.set("isLogin", "true");
           // this.data.isLogin = true;
           // this.set_Login(this.data);
