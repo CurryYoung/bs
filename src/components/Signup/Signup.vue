@@ -97,7 +97,7 @@ export default {
       // }
       signupOne({
         userCode: this.form.code,
-        passWord: this.form.passWord,
+        userPassword: this.form.passWord,
         userName: this.form.name
       }).then(res=>{
         if(res.code==0) {
