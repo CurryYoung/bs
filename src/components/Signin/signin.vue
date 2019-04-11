@@ -144,7 +144,8 @@ export default {
       }).then(res => {
         console.log(res.code==0)
         if (res.code == 0) {
-         console.log(res.code==0)
+          Cookies.set('name', res.userName)
+          Cookies.set('id', res.userId)
           this.$router.push({ path: "/Administrator" });
         } else if (res.code == 7) {
           let data = --res.data.step

@@ -16,8 +16,17 @@
 </template>
 
 <script>
+  import  Cookies from 'js-cookie'
 export default {
-  
+  data() {
+    return {
+      name: ''
+    }
+  },
+  created() {
+    let name = Cookies.get('name')
+    this.name = name
+  }
 }
 </script>
 
@@ -58,7 +67,7 @@ export default {
       border-radius: 10px;
       text-align: center;
       line-height: 20px;
-      background-color: rgb(255, 51, 135); 
+      background-color: rgb(255, 51, 135);
       color: #fff;
     }
   }
