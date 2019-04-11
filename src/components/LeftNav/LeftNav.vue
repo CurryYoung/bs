@@ -39,19 +39,11 @@ export default {
       apyApplyFor: "我要捐赠",
       WX_Set: "我要求助",
       Account_mng: "捐赠信息"
-<<<<<<< HEAD
-  }
-  },
-=======
-<<<<<<< HEAD
   }
  },
- created() {},
-=======
-  }},
->>>>>>> 268ad8db85731ec113a39dabc1cab5f7782ba52d
+
   created() {},
->>>>>>> 053cc171d446f804c34e93ec715db559c5613ab9
+
   methods: {
     handleOpen(key, keyPath) {
       if (key == "3") {
