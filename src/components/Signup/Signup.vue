@@ -16,11 +16,11 @@
           <!--</el-alert>-->
         <el-form-item label="姓名" class="formItem">
           <img src="~assets/image/asterisk.png" class="asterisk" alt="">
-          <el-input placeholder="姓名" v-model="form.phone" name="phone" class="input" @blur="handleFormat"></el-input>
+          <el-input placeholder="姓名" v-model="form.name" name="phone" class="input" @blur="handleFormat"></el-input>
         </el-form-item>
         <el-form-item label="账号" class="formItem">
           <img src="~assets/image/asterisk.png" class="asterisk" alt="">
-          <el-input placeholder="账号" v-model="form.passWord" name="passWord" class="input" maxlength=16 ></el-input>
+          <el-input placeholder="账号" v-model="form.code" name="passWord" class="input" maxlength=16 ></el-input>
         </el-form-item>
         <!--<el-alert-->
             <!--v-show="alertTitlePassWord"-->
@@ -35,7 +35,7 @@
         <!--</el-form-item>-->
         <el-form-item label="密码" class="item formItem">
           <img src="~assets/image/asterisk.png" class="asterisk" alt="">
-          <el-input placeholder=密码 v-model="form.code" name="name" class="input code" type="password"></el-input>
+          <el-input placeholder=密码 v-model="form.passWord" name="name" class="input code" type="password"></el-input>
           <!--<el-button @click="handleGetCode">{{getCodes}}</el-button>-->
         </el-form-item>
         <el-form-item>
@@ -96,17 +96,18 @@ export default {
       //   return
       // }
       signupOne({
-        captcha: this.form.code,
-        password: this.form.passWord,
-        phone: this.form.phone
+        userCode: this.form.code,
+        passWord: this.form.passWord,
+        userName: this.form.name
       }).then(res=>{
         if(res.code==0) {
-          this.actived++
-          let data = res.data
-          Cookies.set('token', data.token)
-          this.set_Login(data)
+          // this.actived++
+          // let data = res.data
+          // Cookies.set('token', data.token)
+          // this.set_Login(data)
+          this.$router.push({name: 'signin'})
           this.$message({
-            message: "注册成功，继续填写入驻资料",
+            message: "注册成功",
             type: "success"
           })
         }
