@@ -16,38 +16,12 @@
         <el-menu-item index="2">
           <span slot="title" class="header list_before">{{WX_Set}}</span>
         </el-menu-item>
-        <el-submenu index="3">
-          <template slot="title">
-            <img src="~assets/image/community_manage.png" alt>
-            <span class="header">{{Cmnty_mng}}</span>
-          </template>
-          <el-menu-item class="center" index="3-1">{{Cmnty_list}}</el-menu-item>
-          <el-menu-item class="center" index="3-2">{{Building_mng}}</el-menu-item>
-          <el-menu-item class="center" index="3-3">{{House_mng}}</el-menu-item>
-          <el-menu-item class="center" index="3-4">{{House_user}}</el-menu-item>
-        </el-submenu>
 
         <el-menu-item index="4">
           <img src="~assets/image/account.png" alt>
           <span slot="title" class="header">{{Account_mng}}</span>
         </el-menu-item>
 
-        <el-submenu index="5">
-          <template slot="title">
-            <img src="~assets/image/pay_cost.png" alt>
-            <span class="header">{{Pay_manage}}</span>
-          </template>
-          <el-menu-item
-            v-for="data in PaySetCenter"
-            :key="data.index"
-            class="center"
-            :index="data.index"
-          >{{data.value}}</el-menu-item>
-          <el-submenu index="5-6" class="marchant">
-            <template slot="title" class="margin_left">{{Pay_marchant}}</template>
-            <el-menu-item index="5-6-1">{{pay_weifush}}</el-menu-item>
-          </el-submenu>
-        </el-submenu>
       </el-menu>
     </div>
   </div>
@@ -62,41 +36,9 @@ export default {
       textColor: "rgb(161, 166, 255)", //侧边栏的高度
       screenHeight: "5000", //获取屏幕高度
       activeTextColor: "#fff", //菜单栏激活时文字的颜色
-      apyApplyFor: "支付接口申请",
-      WX_Set: "微信设置",
-      Cmnty_mng: "小区设置",
-      Cmnty_list: "小区列表",
-      Building_mng: "楼宇资料管理",
-      House_mng: "房屋与业主资料管理",
-      House_user: "住户资料管理",
-      Account_mng: "账户管理",
-      Pay_manage: "缴费管理",
-      Pay_marchant: "商户管理",
-      pay_weifush: "威富商",
-      PaySetCenter: [
-        {
-          value: "缴费设置",
-          index: "5-1"
-        },
-        {
-          value: "抄表导入",
-          index: "5-2"
-        },
-        {
-          value: "未缴账单",
-          index: "5-3"
-        },
-        {
-          value: "已缴账单",
-          index: "5-4"
-        },
-        {
-          value: "缴费通知",
-          index: "5-5"
-        }
-      ],
-      getPath: "" //发送具体路径，用来动态更改navHeader内容
-    };
+      apyApplyFor: "我要捐赠",
+      WX_Set: "我要求助",
+      Account_mng: "捐赠信息"
   },
   created() {},
   methods: {

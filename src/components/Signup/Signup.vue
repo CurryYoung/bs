@@ -36,7 +36,7 @@
         <el-form-item label="密码" class="item formItem">
           <img src="~assets/image/asterisk.png" class="asterisk" alt="">
           <el-input placeholder=密码 v-model="form.code" name="name" class="input code" type="password"></el-input>
-          <el-button @click="handleGetCode">{{getCodes}}</el-button>
+          <!--<el-button @click="handleGetCode">{{getCodes}}</el-button>-->
         </el-form-item>
         <el-form-item>
           <el-button type="primary" :style="{'width': '100%'}" @click="Signup">注册</el-button>
@@ -88,13 +88,13 @@ export default {
   methods: {
     //点击注册触发
     Signup() {
-      if(!this.form.phone ||!this.form.code ||!this.form.passWord||!this.form.confirmPassWord || !this.alertTitle || !this.alertTitlePassWord) {
-        this.$message({
-          message: '先填完表单或表单格式不对',
-          type: 'error'
-        })
-        return
-      }
+      // if(!this.form.phone ||!this.form.code ||!this.form.passWord||!this.form.confirmPassWord || !this.alertTitle || !this.alertTitlePassWord) {
+      //   this.$message({
+      //     message: '先填完表单或表单格式不对',
+      //     type: 'error'
+      //   })
+      //   return
+      // }
       signupOne({
         captcha: this.form.code,
         password: this.form.passWord,
@@ -142,38 +142,38 @@ export default {
       this.actived = val
     },
     //点击获取验证码
-    handleGetCode() {
-       if(!this.form.phone || this.alertTitle) {
-         this.$message({
-           message: "手机号码格式不正确",
-           type: 'error'
-         })
-        return
-      }
-      if(timing || this.isGetCode) {
-        return
-      }
-      let count = 60
-      this.getCodes = `${count}s`
-      this.getCode()
-      timing = setInterval(()=>{
-        count--
-        if (count == 0) {
-          clearInterval(timing)
-          timing = ''
-          this.getCodes = '获取验证码'
-          this.isGetCode = false
-        } else {
-          let data = ''
-          if (count < 10) {
-            data = `0${count}`
-          } else {
-            data = count
-          }
-          this.getCodes = `${data} s`
-        }
-      }, 1000)
-    },
+    // handleGetCode() {
+    //    if(!this.form.phone || this.alertTitle) {
+    //      this.$message({
+    //        message: "手机号码格式不正确",
+    //        type: 'error'
+    //      })
+    //     return
+    //   }
+    //   if(timing || this.isGetCode) {
+    //     return
+    //   }
+    //   let count = 60
+    //   this.getCodes = `${count}s`
+    //   this.getCode()
+    //   timing = setInterval(()=>{
+    //     count--
+    //     if (count == 0) {
+    //       clearInterval(timing)
+    //       timing = ''
+    //       this.getCodes = '获取验证码'
+    //       this.isGetCode = false
+    //     } else {
+    //       let data = ''
+    //       if (count < 10) {
+    //         data = `0${count}`
+    //       } else {
+    //         data = count
+    //       }
+    //       this.getCodes = `${data} s`
+    //     }
+    //   }, 1000)
+    // },
     //发送验证码
     getCode() {
       getCode({
