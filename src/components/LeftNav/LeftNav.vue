@@ -39,7 +39,7 @@ export default {
       apyApplyFor: "我要捐赠",
       WX_Set: "我要求助",
       Account_mng: "捐赠信息"
-  },
+  }},
   created() {},
   methods: {
     handleOpen(key, keyPath) {
