@@ -14,7 +14,7 @@
         </span>
       </div>
       <div>
-        <h2 class="header_title">物业后台管理系统</h2>
+        <h2 class="header_title">在线款物捐助系统</h2>
       </div>
     </div>
     <!-- :rules="loginRules" -->
