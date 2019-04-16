@@ -10,17 +10,44 @@
         :active-text-color="activeTextColor"
       >
         <!-- 侧边栏管理 -->
-        <el-menu-item index="1">
-          <span slot="title" class="header list_before">{{apyApplyFor}}</span>
-        </el-menu-item>
-        <el-menu-item index="2">
-          <span slot="title" class="header list_before">{{WX_Set}}</span>
-        </el-menu-item>
+        <template v-if="state=0">
+          <el-menu-item index="1">
+            <span slot="title" class="header list_before">{{apyApplyFor}}</span>
+          </el-menu-item>
+          <el-menu-item index="2">
+            <span slot="title" class="header list_before">{{WX_Set}}</span>
+          </el-menu-item>
 
-        <el-menu-item index="4">
-          <img src="~assets/image/account.png" alt>
-          <span slot="title" class="header">{{Account_mng}}</span>
-        </el-menu-item>
+          <el-menu-item index="4">
+            <img src="~assets/image/account.png" alt>
+            <span slot="title" class="header">{{Account_mng}}</span>
+          </el-menu-item>
+
+          <el-menu-item index="4">
+            <img src="~assets/image/account.png" alt>
+            <span slot="title" class="header">求助信息</span>
+          </el-menu-item>
+        </template>
+
+        <template else>
+          <el-menu-item index="1">
+            <span slot="title" class="header list_before">捐赠信息审核</span>
+          </el-menu-item>
+          <el-menu-item index="2">
+            <span slot="title" class="header list_before">历史捐赠信息</span>
+          </el-menu-item>
+
+          <el-menu-item index="4">
+            <img src="~assets/image/account.png" alt>
+            <span slot="title" class="header">信息统计</span>
+          </el-menu-item>
+
+          <el-menu-item index="4">
+            <img src="~assets/image/account.png" alt>
+            <span slot="title" class="header">用户管理</span>
+          </el-menu-item>
+        </template>
+
 
       </el-menu>
     </div>
@@ -38,11 +65,15 @@ export default {
       activeTextColor: "#fff", //菜单栏激活时文字的颜色
       apyApplyFor: "我要捐赠",
       WX_Set: "我要求助",
-      Account_mng: "捐赠信息"
+      Account_mng: "捐赠信息",
+      state: ''
   }
  },
 
-  created() {},
+  created() {
+    const state = Cookies.get('state')
+    this.state = state
+  },
 
   methods: {
     handleOpen(key, keyPath) {

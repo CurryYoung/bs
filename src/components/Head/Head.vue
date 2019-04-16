@@ -5,11 +5,11 @@
     </div>
     <div class="headMessage">
       <!--<img src="~assets/image/message.png" class="message" alt="">-->
-      <div class="messageContent">5</div>
+      <!--<div class="messageContent">5</div>-->
       <div class="userInfo">
-        <img  src="" alt="">
-        <span>{{name}}</span>
-        <img src="~assets/image/next.png" alt="">
+        <!--<img  src="" alt="">-->
+        <span>当前账户：{{name}}</span>
+        <!--<img src="~assets/image/next.png" alt="">-->
       </div>
     </div>
   </div>

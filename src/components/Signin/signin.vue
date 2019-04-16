@@ -142,29 +142,19 @@ export default {
         userPassword: this.loginForm.password,
         userCode: this.loginForm.username
       }).then(res => {
-        console.log(res.code==0)
         if (res.code == 0) {
           Cookies.set('name', res.userName)
           Cookies.set('id', res.userId)
+          Cookies.set('state', res.userState)
           this.$router.push({ path: "/Administrator" });
-        } else if (res.code == 7) {
-          let data = --res.data.step
-          Cookies.set("token", res.data.token);
-          this.set_Login(res.data);
-          this.$router.push({ name: "Signup", query: { order: data } });
+        }  else if(res.code=-1) {
           this.$message({
-            message: res.message,
+            message: '密码错误，重新登陆',
             type: "warning"
           });
-        } else if(res.code==10) {
-          let data = res.data.step
-          let message = res.data.remark
-          Cookies.set("token", res.data.token);
-          this.set_Login(res.data);
-          this.$router.push({name: 'Signup', query: {order: data, type: '3' }, params: {message: message}})
-        } else {
+        } else if(res.code=-2) {
           this.$message({
-            message: res.message,
+            message: '账号不存在',
             type: "warning"
           });
         }
