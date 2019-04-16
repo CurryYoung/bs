@@ -1,11 +1,11 @@
 <template>
 <div class="container">
   <div class="leftContent">
-    <left-nav @getPath=handleTitle></left-nav> 
+    <left-nav @getPath=handleTitle></left-nav>
   </div>
   <div class="rightContent">
     <m-head></m-head>
-    <nav-header :navTitle="navTitle"></nav-header>
+    <!--<nav-header :navTitle="navTitle"></nav-header>-->
     <!-- <community-manage></community-manage> -->
     <!-- 路由跳转 -->
     <keep-alive>
@@ -15,7 +15,7 @@
 
   </div>
 </div>
-  
+
 </template>
 
 <script>

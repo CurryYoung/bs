@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <div class="headTitle">
-      <span>物业管理系统</span>
+      <span>在线款物捐赠系统</span>
     </div>
     <div class="headMessage">
-      <img src="~assets/image/message.png" class="message" alt="">
+      <!--<img src="~assets/image/message.png" class="message" alt="">-->
       <div class="messageContent">5</div>
       <div class="userInfo">
         <img  src="" alt="">
-        <span>我是名字</span>
+        <span>{{name}}</span>
         <img src="~assets/image/next.png" alt="">
       </div>
     </div>
