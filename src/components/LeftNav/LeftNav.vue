@@ -10,7 +10,7 @@
         :active-text-color="activeTextColor"
       >
         <!-- 侧边栏管理 -->
-        <template v-if="state=0">
+        <template v-if="state==0">
           <el-menu-item index="1">
             <span slot="title" class="header list_before">{{apyApplyFor}}</span>
           </el-menu-item>
