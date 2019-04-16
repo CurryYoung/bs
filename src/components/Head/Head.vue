@@ -8,7 +8,7 @@
       <!--<div class="messageContent">5</div>-->
       <div class="userInfo">
         <!--<img  src="" alt="">-->
-        <span>当前账户：{{name}}</span>
+        <span>当前用户：{{name}}</span>
         <!--<img src="~assets/image/next.png" alt="">-->
       </div>
     </div>
