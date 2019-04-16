@@ -29,7 +29,7 @@
           </el-menu-item>
         </template>
 
-        <template else>
+        <template v-else>
           <el-menu-item index="1">
             <span slot="title" class="header list_before">捐赠信息审核</span>
           </el-menu-item>
@@ -55,6 +55,7 @@
 </template>
 
 <script>
+  import  Cookies from  'js-cookie'
 export default {
   name: "LeftNav",
   data() {
