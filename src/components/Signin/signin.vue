@@ -147,12 +147,12 @@ export default {
           Cookies.set('id', res.userId)
           Cookies.set('state', res.userState)
           this.$router.push({ path: "/Administrator" });
-        }  else if(res.code=-2) {
+        }  else if(res.code==-2) {
           this.$message({
             message: '密码错误，重新登陆',
             type: "warning"
           });
-        } else if(res.code=-1) {
+        } else if(res.code==-1) {
           this.$message({
             message: '账号不存在',
             type: "warning"
