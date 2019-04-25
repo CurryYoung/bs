@@ -1,78 +1,35 @@
 <template>
-  <div class="container CommunityContent">
-    <div class="head">
-      <div class="btngroup">
-        <div class="button" @click="goAddBd">
-          <span>添加楼宇</span>
-        </div>
-        <div class="button delete" @click="deleteBuildings">
-          <span>删除</span>
-        </div>
-      </div>
-      <div class="search">
-        <el-input class="input" placeholder="请输入楼宇名称" v-model="buildingName"></el-input>
-        <div class="searchBtn">
-          <img src="~assets/image/search.png" alt="">
-        </div>
-      </div>
-    </div>
-    <div class="communityInfo">
-      <div class="communityHeader">
-        <ul class="headerList">
-          <li>
-            <el-checkbox v-model="allCheck" @change="handleCheckAllChange"></el-checkbox>
-          </li>
-          <li v-for="(data, index) of communityHeaderData" :key="index"><span>{{data}}</span></li>
-        </ul>
-      </div>
-      <div class="communityMain" v-loading="loading">
-        <div class="conter">
-          <ul class="conterList" v-for="(data, index) of buildingCenter" :key="index" :style="{background: data.backgroundColor}">
-            <li>
-              <el-checkbox v-model="data.checkBox" @change="handleCheckBox"></el-checkbox>
-            </li>
-            <li><span>{{data.communityName}}</span></li>
-            <li><span>{{data.name}}</span></li>
-            <li><span>{{data.unit}}</span> <span>管理</span> </li>
-            <li><span>{{data.floor}}</span></li>
-            <li><span>{{data.type}}</span></li>
-            <li><span>{{data.struct }}</span></li>
-            <li><span>{{data.orientation }}</span></li>
-            <li>
-              <div class="operationBtn">
-                <div class="editor Btn" @click="editInfo(data.id)">
-                  <span>编辑</span>
-                </div>
-                <div class="delete Btn" @click="deleteBuilding(data.id)">
-                  <span>删除</span>
-                </div>
-                <div class="manage Btn">
-                  <span>房屋管理</span>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="noData" v-if="!buildingCenter.length">
-          <span>暂无数据...</span>
-        </div>
-      </div>
-     
-      <div class="totalInfo">
-        <span>共有<span class="num">{{total}}</span>小区记录</span>
-      </div>
-      <div class="pagination" v-if="total">
-          <el-pagination
-            layout="prev, pager, next, jumper"
-            :total="total"
-            :current-page="currentPage"
-            :page-size="pageSize"
-            :prev-click="handlePrev"
-            :next-click="handleNext"
-            :current-change="handleCurrent">
-          </el-pagination>
-      </div>
-    </div>
+  <div class="container">
+    <div class="headerTitle" style="{height: 100px; line-height: 100px;text-align: center;}">我要求助</div>
+    <el-form ref="form" :model="form" label-width="80px">
+      <el-form-item label="姓名">
+        <el-input v-model="form.name"></el-input>
+      </el-form-item>
+      <el-form-item label="电话">
+        <el-input v-model="form.tel"></el-input>
+      </el-form-item>
+      <el-form-item label="地址">
+        <el-input v-model="form.address"></el-input>
+      </el-form-item>
+      <el-form-item label="捐赠类型">
+        <el-select v-model="form.region" placeholder="请选择活动区域">
+          <el-option
+            v-for="item in options"
+            :label="item.label"
+            :key="item.label"
+            :value="item.value"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="捐赠数量">
+        <el-input v-model="form.num"></el-input>
+      </el-form-item>
+      <el-form-item label="备注">
+        <el-input v-model="form.note"></el-input>
+      </el-form-item>
+      <el-form-item @click="handleClick($event)">
+        <el-button>提交</el-button>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
@@ -85,193 +42,33 @@ import {
 export default {
   data() {
     return {
-      communityHeaderData: [
-        "所属小区",
-        "楼宇名称",
-        "单元数量",
-        "楼宇层数",
-        "楼宇类型",
-        "楼宇结构",
-        "楼宇朝向",
-        "操作"
-      ],
-      buildingCenter: [],
-      buildingOptions: [], //多选数组
-      allCheck: false, //全选控制
-      pageSize: 12, //分页器每页最多存放的数量
-      currentPage: 1, //当前页数
-      total: 0, //楼宇总数
-      buildingName: "", //搜索框绑定的值
-      loading: true //页面显示加载中
-    };
+      form: {},
+      options: [{
+        value: '1',
+        label: '衣物'
+      }, {
+        value: '2',
+        label: '款物'
+      }, {
+        value: '3',
+        label: '生活用品'
+      }]
+    }
   },
   created() {
-    if (!this.$route.params) {
-      this.getBuildingList();
-    }
-    this.$watch("buildingName", () => {
-      this.loading = true;
-      this.$nextTick(() => {
-        let timing = setTimeout(()=>{
-          this.getBuildingList();
-        }, 200)
-      });
-    });
+
   },
   activated() {
-    if (this.$route.params) {
-      this.getBuildingList()
-    }
+
   },
   methods: {
-    goAddBd() {
-      this.$router.push({ path: "/AddBuilding" });
-    },
-    //编辑楼宇信息
-    editInfo(id) {
-      this.$router.push({ path: "EditBuildingInfo", query: {id: id} });
-    },
-    //处理多选事件
-    handleCheckAllChange(val) {
-      if (val) {
-        this.buildingCenter.forEach((element, index, arr) => {
-          element.checkBox = true;
-          if (!this.buildingOptions.includes(arr[index].id)) {
-            this.buildingOptions.push(arr[index].id);
-          }
-        });
-      } else {
-        this.buildingCenter.forEach((element, index, arr) => {
-          element.checkBox = false;
-          this.buildingOptions = [];
-        });
-      }
-      console.log(this.buildingOptions);
-    },
 
-    //处理单选事件
-    handleCheckBox(val) {
-      if (val) {
-        this.buildingCenter.forEach((element, index, arr) => {
-          if (
-            arr[index].checkBox &&
-            !this.buildingOptions.includes(arr[index].id)
-          ) {
-            this.buildingOptions.push(arr[index].id);
-          }
-        });
-        console.log(this.buildingOptions);
-      } else {
-        this.allCheck = false;
-        this.buildingCenter.forEach((element, index, arr) => {
-          if (!arr[index].checkBox) {
-            this.buildingOptions.forEach((value, key, arrList) => {
-              if (arrList[key] == arr[index].id) {
-                this.buildingOptions.splice(key, 1);
-              }
-            });
-          }
-        });
-        console.log(this.buildingOptions);
-      }
-    },
-
-    //获取楼宇列表
-    getBuildingList() {
-      list_building({
-        page: this.currentPage,
-        size: this.pageSize,
-        key: this.buildingName
-      })
-        .then(res => {
-          if (res.code == 0) {
-            this.loading = false;
-            this.buildingCenter = [];
-            if (res.data.length) {
-              let data = res.data;
-              data.forEach((element, index, arr) => {
-                arr[index].checkBox = false;
-                let obj = Object.assign({}, arr[index]);
-                this.buildingCenter.push(obj);
-              });
-              this.total = res.totalRecords;
-              this.buildingCenter.forEach((element, key) => {
-                if (key % 2 != 0) element.backgroundColor = "#f4f5f9";
-              });
-            }
-          }
-        })
-        .catch(err => {});
-    },
-
-    //单个删除楼宇
-    deleteBuilding(id) {
-      this.$confirm("确定删除此小区信息？", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消"
-      }).then(() => {
-        delete_building({
-          id: id
-        }).then(res => {
-          if (res.code == 0) {
-            this.$message({
-              message: "删除成功",
-              type: "success"
-            });
-            this.getBuildingList();
-          }
-        });
-      });
-    },
-
-    //批量删除楼宇
-    deleteBuildings() {
-      if (!this.buildingOptions.length) {
-        this.$message({
-          message: "请先选择删除哪些小区信息"
-        });
-        return;
-      }
-      this.$confirm("确定永久删除所选的小区信息？", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消"
-      }).then(() => {
-        delete_buildings({
-          ids: this.buildingOptions
-        }).then(res => {
-          if (res.code == 0) {
-            this.$message({
-              message: "删除成功",
-              type: "success"
-            });
-            this.getBuildingList();
-            this.allCheck = false;
-          }
-        });
-      });
-    },
-
-    //处理点击分页器上一页
-    handlePrev() {
-      this.currentPage--;
-      this.getBuildingList();
-    },
-    //处理点击分页器下一页
-    handleNext() {
-      this.currentPage++;
-      this.getBuildingList();
-    },
-    //处理点击页码
-    handleCurrent(index) {
-      this.currentPage = index;
-      this.getBuildingList();
-    }
   }
 };
 </script>
 
 <style lang="less">
-@import "~common/less/variable.less";
+@import "../../common/less/variable.less";
 .container {
   .el-input__inner {
     height: 29px;
@@ -281,7 +78,7 @@ export default {
 
 
 <style lang="less" scoped>
-@import "~common/less/variable.less";
+@import "../../common/less/variable.less";
 .CommunityContent {
   margin-top: 20px;
   padding-bottom: 58px;

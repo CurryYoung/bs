@@ -18,32 +18,28 @@
             <span slot="title" class="header list_before">{{WX_Set}}</span>
           </el-menu-item>
 
-          <el-menu-item index="4">
-            <img src="~assets/image/account.png" alt>
+          <el-menu-item index="3">
             <span slot="title" class="header">{{Account_mng}}</span>
           </el-menu-item>
 
           <el-menu-item index="4">
-            <img src="~assets/image/account.png" alt>
             <span slot="title" class="header">求助信息</span>
           </el-menu-item>
         </template>
 
         <template v-else>
-          <el-menu-item index="1">
+          <el-menu-item index="5">
             <span slot="title" class="header list_before">捐赠信息审核</span>
           </el-menu-item>
-          <el-menu-item index="2">
+          <el-menu-item index="6">
             <span slot="title" class="header list_before">历史捐赠信息</span>
           </el-menu-item>
 
-          <el-menu-item index="4">
-            <img src="~assets/image/account.png" alt>
+          <el-menu-item index="7">
             <span slot="title" class="header">信息统计</span>
           </el-menu-item>
 
-          <el-menu-item index="4">
-            <img src="~assets/image/account.png" alt>
+          <el-menu-item index="8">
             <span slot="title" class="header">用户管理</span>
           </el-menu-item>
         </template>
@@ -85,39 +81,20 @@ export default {
     },
     // 侧边栏点击激活
     handleSelect(index, indexPath) {
-      console.log(index, indexPath);
       // console.log(this.route)
-      console.log(index, indexPath);
-      // console.log(this.route)
-      if (index == "3-1") {
-        this.getPath = this.Cmnty_list;
-        this.$emit("getPath", this.getPath);
+      if (index == "1") {
         this.$router.push({
           name: "CommunityManage",
           params: { property: "1" }
         });
-      } else if (index == "3-2") {
-        this.getPath = this.Building_mng;
-        this.$emit("getPath", this.getPath);
-        this.$router.push({ name: "BuildingInfo", params: { property: "1" } });
-      } else if (index == "3-3") {
-        this.getPath = this.House_mng;
-        this.$emit("getPath", this.getPath);
-        this.$router.push({ name: "MasterInfoMng" });
-      } else if (index == "3-4") {
-        this.$router.push({ name: "ResidentNav" });
-        this.getPath = this.House_user;
-        this.$emit("getPath", this.getPath);
-      } else if (index == "1") {
-        this.getPath = this.apyApplyFor;
-        this.$emit("getPath", this.getPath);
       } else if (index == "2") {
-        this.getPath = this.WX_Set;
-        this.$emit("getPath", this.getPath);
+        this.$router.push({ name: "BuildingInfo", params: { property: "1" } });
+      } else if (index == "3") {
+        this.$router.push({ name: "MasterInfoMng" });
       } else if (index == "4") {
-        this.getPath = this.Account_mng;
-        this.$emit("getPath", this.getPath);
-      } else if (index == "5-1") {
+        this.$router.push({ name: "ResidentNav" });
+      }
+       else if (index == "5-1") {
         this.$router.push({ name: "PaySet" });
         this.getPath = this.Pay_set;
         this.$emit("getPath", this.getPath);
