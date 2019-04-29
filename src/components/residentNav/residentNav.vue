@@ -3,13 +3,14 @@
     <ul style="margin-top: 20px;">
       <li v-for="item in title" style="display: inline-block;width: 20%;text-align: center;">{{item}}</li>
     </ul>
-    <ul>
-      <li></li>
+    <ul v-for="item in data">
+      <li v-for="items in item">{{item}}</li>
     </ul>
   </div>
 </template>
 <script>
 import ResidentAcross from "../resident/residentAcross";
+import help from "API/help.js"
 export default {
   data() {
     return {
@@ -17,14 +18,16 @@ export default {
       data: []
     }
   },
+  created() {
+    this.getHelpInfo()
+  },
   methods: {
-    toggle(i, v) {
-      this.active = i;
-      this.currentView = v;
+    getHelpInfo() {
+      const getData = new help()
+      getData.heloSelect({}).then(res=>{
+        this.data = res
+      })
     }
-    // handleClick(tab, event) {
-    //   console.log(tab, event);
-    // }
   },
   components: {
     ResidentAcross

@@ -18,6 +18,7 @@ export default {
       data: []
     }},
   created() {
+    this.getHelpInfo()
   },
   activated() {
   },
@@ -25,7 +26,7 @@ export default {
     getHelpInfo() {
       const getData = new help()
       getData.slectInfo({}).then(res=>{
-        res.data
+        this.data = res
       })
     }
   }
