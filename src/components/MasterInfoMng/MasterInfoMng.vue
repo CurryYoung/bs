@@ -4,7 +4,7 @@
       <li v-for="item in title" style="display: inline-block;width: 20%;text-align: center;">{{item}}</li>
     </ul>
     <ul v-for="item in data">
-      <li v-for="items in item">{{items}}</li>
+      <li v-for="items in item" style="display: inline-block;width: 20%;text-align: center;">{{items}}</li>
     </ul>
   </div>
 </template>

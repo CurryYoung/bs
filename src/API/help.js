@@ -6,10 +6,9 @@ class comHelp {
   //我要捐赠
   heip(params) {
     let id = Cookies.get('id')
-    console.log(id)
     return new Promise((resolve, reject)=>{
       let url = "/donate/submit"
-      // params.userId = id
+      params.userId = id
       axios.post(url, params).then((res)=>{
         resolve(res.data)
       }).catch(err=>{
@@ -47,10 +46,9 @@ class comHelp {
 //  求助信息
   heloSelect(params) {
     let id = Cookies.get('id')
-    console.log(id)
     return new Promise((resolve, reject)=>{
       let url = "/help/select"
-      // params.userId = id
+      params.userId = id
       axios.post(url, params).then((res)=>{
         resolve(res.data)
       }).catch(err=>{
