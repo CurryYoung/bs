@@ -25,7 +25,8 @@ export default {
     getHelpInfo() {
       const getData = new help()
       getData.heloSelect({}).then(res=>{
-        this.data = res
+        console.log(res)
+        // this.data = res
       })
     }
   },
