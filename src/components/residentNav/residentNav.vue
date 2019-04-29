@@ -4,11 +4,11 @@
       <li v-for="item in title" style="display: inline-block;width: 16.6%;text-align: center;">{{item}}</li>
     </ul>
     <ul v-for="item in data">
-      <li style="display: inline-block;width: 16.6%;text-align: center;">{{items.hName}}</li>
-      <li style="display: inline-block;width: 16.6%;text-align: center;">{{items.hPhone}}</li>
-      <li style="display: inline-block;width: 16.6%;text-align: center;">{{items.hAddress}}</li>
-      <li style="display: inline-block;width: 16.6%;text-align: center;">{{items.hCategory}}</li>
-      <li style="display: inline-block;width: 16.6%;text-align: center;">{{items.hCount}}</li>
+      <li style="display: inline-block;width: 16.6%;text-align: center;">{{item.hName}}</li>
+      <li style="display: inline-block;width: 16.6%;text-align: center;">{{item.hPhone}}</li>
+      <li style="display: inline-block;width: 16.6%;text-align: center;">{{item.hAddress}}</li>
+      <li style="display: inline-block;width: 16.6%;text-align: center;">{{item.hCategory}}</li>
+      <li style="display: inline-block;width: 16.6%;text-align: center;">{{item.hCount}}</li>
       <li style="display: inline-block;width: 16.6%;text-align: center;">{{state}}</li>
     </ul>
   </div>
