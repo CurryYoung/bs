@@ -26,8 +26,8 @@
       <el-form-item label="备注">
         <el-input v-model="form.hNote "></el-input>
       </el-form-item>
-      <el-form-item @click="handleClick($event)">
-        <el-button>提交</el-button>
+      <el-form-item>
+        <el-button @click="handleClick($event)">提交</el-button>
       </el-form-item>
     </el-form>
   </div>
