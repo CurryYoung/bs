@@ -29,7 +29,7 @@ class comHelp {
     })
   }
 //  捐赠信息
-  pleHelp(params) {
+  slectInfo(params) {
     return new Promise((resolve, reject)=>{
       let url = "/donate/select"
       params.userId = userId

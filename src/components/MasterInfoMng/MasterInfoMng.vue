@@ -24,7 +24,7 @@ export default {
   methods: {
     getHelpInfo() {
       const getData = new help()
-      getData.pleHelp({}).then(res=>{
+      getData.slectInfo({}).then(res=>{
         res.data
       })
     }
