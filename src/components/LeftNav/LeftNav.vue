@@ -4,7 +4,6 @@
       <el-menu
         class="left-nav"
         @select="handleSelect"
-        @open="handleOpen"
         :background-color="bgColor"
         :text-color="textColor"
         :active-text-color="activeTextColor"
@@ -82,6 +81,7 @@ export default {
     // 侧边栏点击激活
     handleSelect(index, indexPath) {
       // console.log(this.route)
+      console.log(index)
       if (index == "1") {
         this.$router.push({
           name: "CommunityManage",
@@ -93,15 +93,6 @@ export default {
         this.$router.push({ name: "MasterInfoMng" });
       } else if (index == "4") {
         this.$router.push({ name: "ResidentNav" });
-      }
-       else if (index == "5-1") {
-        this.$router.push({ name: "PaySet" });
-        this.getPath = this.Pay_set;
-        this.$emit("getPath", this.getPath);
-      } else if (index == "5-2") {
-        this.$router.push({ name: "MataReading" });
-      } else if (index == "5-6-1") {
-        this.$router.push({ name: "Marchant" });
       }
     }
   }

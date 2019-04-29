@@ -3,14 +3,14 @@
     <ul style="margin-top: 20px;">
       <li v-for="item in title" style="display: inline-block;width: 20%;text-align: center;">{{item}}</li>
     </ul>
-    <ul>
-      <li></li>
+    <ul v-for="item in data">
+      <li v-for="items in item">{{item}}</li>
     </ul>
   </div>
 </template>
 
 <script>
-import { roomList, deleteRoom, deleteManyRoom } from "API/room";
+  import help from "API/help.js"
 export default {
   data() {
     return {
@@ -18,11 +18,17 @@ export default {
       data: []
     }},
   created() {
-
   },
   activated() {
   },
-  methods: {}
+  methods: {
+    getHelpInfo() {
+      const getData = new help()
+      getData.pleHelp({}).then(res=>{
+        res.data
+      })
+    }
+  }
 };
 </script>
 

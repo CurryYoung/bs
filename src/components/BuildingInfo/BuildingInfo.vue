@@ -34,11 +34,8 @@
 </template>
 
 <script>
-import {
-  list_building,
-  delete_building,
-  delete_buildings
-} from "API/buildingList";
+  import help from "API/help.js"
+
 export default {
   data() {
     return {
@@ -62,7 +59,26 @@ export default {
 
   },
   methods: {
-
+    handleClick() {
+      const helpSubmit = new help()
+      Object.values(this.form).forEach(item=>{
+        if(!item) {
+          this.$message({
+            message: '先把表单填写完整',
+            type: 'warning'
+          })
+        }
+        return
+      })
+      helpSubmit.pleHelp(this.form).then(res=>{
+        if(res.code==0) {
+          this.$message({
+            message: "提交成功",
+            tyoe: "success"
+          })
+        }
+      })
+    }
   }
 };
 </script>

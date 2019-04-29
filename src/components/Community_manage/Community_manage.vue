@@ -35,6 +35,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import help from 'API/help'
 export default {
   data() {
     return {
@@ -60,7 +61,27 @@ export default {
   },
   methods: {
     handleClick(e) {
+      const goHelp = new help()
+      Object.values(this.form).forEach(item=>{
+        if(!item) {
+          this.$message({
+            message: '先把表单填写完整',
+            type: 'warning'
+          })
+        }
+        return
+      })
+      goHelp.heip(this.form).then(res=>{
+        if(res.code==0) {
+          this.$message({
+            message: '提交成功',
+            type: 'success'
+          })
+          this.form={}
+        }
+      }).catch(err=>{
 
+      })
     }
   }
 };
