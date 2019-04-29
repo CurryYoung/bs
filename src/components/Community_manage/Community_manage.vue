@@ -3,13 +3,13 @@
     <div class="headerTitle" style="{height: 100px; line-height: 100px;text-align: center;}">我要捐赠</div>
     <el-form ref="form" :model="form" label-width="80px">
       <el-form-item label="姓名">
-        <el-input v-model="form.hName"></el-input>
+        <el-input v-model="form.dName"></el-input>
       </el-form-item>
       <el-form-item label="电话">
-        <el-input v-model="form.hPhone"></el-input>
+        <el-input v-model="form.dPhone"></el-input>
       </el-form-item>
       <el-form-item label="地址">
-        <el-input v-model="form.hAddress"></el-input>
+        <el-input v-model="form.dAddress"></el-input>
       </el-form-item>
       <el-form-item label="捐赠类型">
         <el-select v-model="form.dCategory" placeholder="请选择活动区域">
