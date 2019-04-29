@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Cookie from 'js-cookie'
 
-let userId = Cookie.get('id')
+// let userId = Cookie.get('id')
 class comHelp {
   //我要捐赠
   heip(params) {
