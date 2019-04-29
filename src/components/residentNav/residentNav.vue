@@ -1,10 +1,14 @@
 <template>
   <div class="container">
     <ul style="margin-top: 20px;">
-      <li v-for="item in title" style="display: inline-block;width: 20%;text-align: center;">{{item}}</li>
+      <li v-for="item in title" style="display: inline-block;width: 16.6%;text-align: center;">{{item}}</li>
     </ul>
     <ul v-for="item in data">
-      <li v-for="items in item">{{items}}</li>
+      <li style="display: inline-block;width: 20%;text-align: center;">{{items.dName}}</li>
+      <li style="display: inline-block;width: 20%;text-align: center;">{{items.dPhone}}</li>
+      <li style="display: inline-block;width: 20%;text-align: center;">{{items.dAddress}}</li>
+      <li style="display: inline-block;width: 20%;text-align: center;">{{items.dCategory}}</li>
+      <li style="display: inline-block;width: 20%;text-align: center;">{{items.dCount}}</li>
     </ul>
   </div>
 </template>
@@ -14,8 +18,9 @@ import help from "API/help.js"
 export default {
   data() {
     return {
-      title: ['姓名', '电话', '地址', '类型', '数量'],
-      data: []
+      title: ['姓名', '电话', '地址', '类型', '数量', '状态'],
+      data: [],
+      state: ""
     }
   },
   created() {
@@ -25,8 +30,16 @@ export default {
     getHelpInfo() {
       const getData = new help()
       getData.heloSelect({}).then(res=>{
-        console.log(res)
-        // this.data = res
+        this.data = res
+        this.data.forEach((item, index, arr)=>{
+          if(item.hState == 0) {
+            this.state = "待审核"
+          }else if(item.hState == -1) {
+            this.state = "审核通过"
+          } else {
+            this.state = "审核不通过"
+          }
+        })
       })
     }
   },

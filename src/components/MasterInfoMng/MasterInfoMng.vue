@@ -1,10 +1,15 @@
 <template>
   <div class="container">
     <ul style="margin-top: 20px;">
-      <li v-for="item in title" style="display: inline-block;width: 20%;text-align: center;">{{item}}</li>
+      <li v-for="item in title" style="display: inline-block;width: 16.6%;text-align: center;">{{item}}</li>
     </ul>
     <ul v-for="item in data">
-      <li v-for="items in item" style="display: inline-block;width: 20%;text-align: center;">{{items}}</li>
+      <li style="display: inline-block;width: 16.6%;text-align: center;">{{items.hName}}</li>
+      <li style="display: inline-block;width: 16.6%;text-align: center;">{{items.hPhone}}</li>
+      <li style="display: inline-block;width: 16.6%;text-align: center;">{{items.hAddress}}</li>
+      <li style="display: inline-block;width: 16.6%;text-align: center;">{{items.hCategory}}</li>
+      <li style="display: inline-block;width: 16.6%;text-align: center;">{{items.hCount}}</li>
+      <li style="display: inline-block;width: 16.6%;text-align: center;">{{state}}</li>
     </ul>
   </div>
 </template>
@@ -14,8 +19,9 @@
 export default {
   data() {
     return {
-      title: ['姓名', '电话', '地址', '类型', '数量'],
-      data: []
+      title: ['姓名', '电话', '地址', '类型', '数量', '状态'],
+      data: [],
+      state: ""
     }},
   created() {
     this.getHelpInfo()
@@ -27,6 +33,15 @@ export default {
       const getData = new help()
       getData.slectInfo({}).then(res=>{
         this.data = res
+        this.data.forEach((item, index, arr)=>{
+          if(item.dState == 0) {
+            this.state = "待审核"
+          }else if(item.dState == -1) {
+            this.state = "审核通过"
+          } else {
+            this.state = "审核不通过"
+          }
+        })
       })
     }
   }
