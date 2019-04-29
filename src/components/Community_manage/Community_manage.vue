@@ -3,16 +3,16 @@
     <div class="headerTitle" style="{height: 100px; line-height: 100px;text-align: center;}">我要捐赠</div>
     <el-form ref="form" :model="form" label-width="80px">
       <el-form-item label="姓名">
-        <el-input v-model="form.name"></el-input>
+        <el-input v-model="form.hName"></el-input>
       </el-form-item>
       <el-form-item label="电话">
-        <el-input v-model="form.tel"></el-input>
+        <el-input v-model="form.hPhone"></el-input>
       </el-form-item>
       <el-form-item label="地址">
-        <el-input v-model="form.address"></el-input>
+        <el-input v-model="form.hAddress"></el-input>
       </el-form-item>
       <el-form-item label="捐赠类型">
-        <el-select v-model="form.region" placeholder="请选择活动区域">
+        <el-select v-model="form.dCategory" placeholder="请选择活动区域">
           <el-option
             v-for="item in options"
             :label="item.label"
@@ -21,10 +21,10 @@
         </el-select>
       </el-form-item>
       <el-form-item label="捐赠数量">
-        <el-input v-model="form.num"></el-input>
+        <el-input v-model="form.dCount"></el-input>
       </el-form-item>
       <el-form-item label="备注">
-        <el-input v-model="form.note"></el-input>
+        <el-input v-model="form.dNote"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button @click="handleClick($event)">提交</el-button>
