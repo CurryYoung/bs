@@ -5,6 +5,7 @@ let userId = Cookie.get('id')
 class comHelp {
   //我要捐赠
   heip(params) {
+    let userId = Cookie.get('id')
     return new Promise((resolve, reject)=>{
       let url = "/donate/submit"
       params.userId = userId
@@ -18,6 +19,7 @@ class comHelp {
 
 //  我要求助
   pleHelp(params) {
+    let userId = Cookie.get('id')
     return new Promise((resolve, reject)=>{
       let url = "/help/submit"
       params.userId = userId
@@ -30,6 +32,7 @@ class comHelp {
   }
 //  捐赠信息
   slectInfo(params) {
+    let userId = Cookie.get('id')
     return new Promise((resolve, reject)=>{
       let url = "/donate/select"
       params.userId = userId
@@ -42,6 +45,7 @@ class comHelp {
   }
 //  求助信息
   heloSelect(params) {
+    let userId = Cookie.get('id')
     return new Promise((resolve, reject)=>{
       let url = "/help/select"
       params.userId = userId
