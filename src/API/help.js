@@ -53,3 +53,4 @@ class comHelp {
     })
   }
 }
+export default comHelp
